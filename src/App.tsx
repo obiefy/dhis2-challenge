@@ -1,11 +1,10 @@
+import DashboardList from "./components/dashboards/list";
 
-function App() {
 
+export default function App() {
   return (
-    <div>
-      Hello world!
+    <div className="p-12">
+      <DashboardList />
     </div>
   )
 }
-
-export default App
