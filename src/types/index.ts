@@ -3,3 +3,6 @@ export type Dashboard = {
   id:string,
   starred: boolean
 }
+
+
+export type ApiResponse<T> = [null | T, null | string];

@@ -1,13 +1,18 @@
-import { useState } from "react";
 import { Accordion } from "@/components/ui/accordion"
-import { Dashboard } from "@/types/dashboard";
 import DashboardHeader from "./header";
+import { useDashboard } from "@/hooks/dashboard";
+import Loading from "./loading";
 
 export default function DashboardList() {
-  const [dashboards, setDashboards] = useState<Dashboard[]>([]);
+  const {loading, dashboards, error} = useDashboard();
   return (
-    <Accordion type="single" collapsible className="w-full">
-      {dashboards.map((dashboard) => <DashboardHeader key={dashboard.id} dashboard={dashboard}/>)}
-    </Accordion>
+    <div className="">
+      {error && <div className="text-red-500">{error}</div>}
+      {loading && <Loading />}
+      <Accordion type="single" collapsible className="w-full">
+        {dashboards.map((dashboard) => <DashboardHeader key={dashboard.id} dashboard={dashboard}/>)}
+      </Accordion>
+    </div>
+
   );
 }
