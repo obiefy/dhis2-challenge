@@ -82,7 +82,7 @@ export const useDashboardItems = (
         const displayNameLookup = {
           VISUALIZATION: item.visualization?.name,
           MAP: item.map?.name,
-          MESSAGES: "Messages",
+          MESSAGES: item.text,
           TEXT: item.text,
         };
 

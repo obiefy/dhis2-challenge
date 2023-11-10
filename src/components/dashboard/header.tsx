@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useDashboard, useDashboardItems } from "@/hooks/dashboard";
 import Loading from "./loading";
 import Item from "./item";
+import { Skeleton } from "../ui/skeleton";
 
 type PropsType = { dashboard: Dashboard };
 
@@ -48,14 +49,19 @@ export default function DashboardHeader({
         </div>
       </AccordionTrigger>
       <AccordionContent className="pb-0">
-        <div className="">
-          {loading && (
-            <div className="mx-4">
-              <Loading />
-            </div>
-          )}
-          {!loading && items.map((item) => <Item key={item.id} item={item} />)}
-        </div>
+        {loading && (
+          <div className="m-4 grid md:grid-cols-2 gap-2">
+            <Skeleton className="w-full h-24 bg-slate-200" />
+            <Skeleton className="w-full h-24 bg-slate-200" />
+          </div>
+        )}
+        {!loading && (
+          <div className="m-4 grid md:grid-cols-2 gap-2">
+            {items.map((item) => (
+              <Item key={item.id} item={item} />
+            ))}
+          </div>
+        )}
       </AccordionContent>
     </AccordionItem>
   );

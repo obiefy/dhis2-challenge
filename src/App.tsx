@@ -1,4 +1,4 @@
-import DashboardList from "./components/dashboards/list";
+import DashboardList from "./components/dashboard/list";
 
 export default function App() {
   return (

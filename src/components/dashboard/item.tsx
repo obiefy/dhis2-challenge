@@ -13,11 +13,13 @@ export default function Item({ item }: PropsType) {
   };
 
   return (
-    <div className="px-4 py-4 flex border-b border-b-slate-200 hover:bg-slate-100 last:border-b-0">
-      {React.createElement(icons[item.type], {
-        size: 18,
-        className: "mt-0.5 mr-2 text-slate-400",
-      })}
+    <div className="flex px-4 py-4 bg-slate-100 rounded-md border border-slate-100 hover:border-slate-200 hover:shadow">
+      <div className="w-[28px]">
+        {React.createElement(icons[item.type], {
+          size: 18,
+          className: "mt-0.5 mr-2 text-slate-400",
+        })}
+      </div>
       <p>{item.displayName}</p>
     </div>
   );
