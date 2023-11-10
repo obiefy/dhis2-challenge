@@ -1,6 +1,6 @@
 import { get } from "@/lib/api";
 import { Dashboard, DashboardItem } from "@/types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type DashboardDataShape = {
   loading: boolean;
@@ -51,10 +51,6 @@ export const useDashboard = (): DashboardDataShape => {
     if (error) setError(error);
     setLoading(false);
   };
-
-  useEffect(() => {
-    getDashboards();
-  }, []);
 
   return {
     loading,

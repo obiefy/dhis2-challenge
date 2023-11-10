@@ -5,16 +5,16 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Bookmark } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDashboard, useDashboardItems } from "@/hooks/dashboard";
-import Loading from "./loading";
 import Item from "./item";
 import { Skeleton } from "../ui/skeleton";
 
-type PropsType = { dashboard: Dashboard };
+type PropsType = { dashboard: Dashboard; isActive?: boolean };
 
 export default function DashboardHeader({
   dashboard: dashboardParam,
+  isActive,
 }: PropsType) {
   const [dashboard, setDashboard] = useState(dashboardParam);
   const [loaded, setLoaded] = useState(false);
@@ -30,6 +30,12 @@ export default function DashboardHeader({
     await getItems();
     setLoaded(true);
   };
+
+  useEffect(() => {
+    if (isActive) {
+      onLoadItems();
+    }
+  }, []);
 
   return (
     <AccordionItem
