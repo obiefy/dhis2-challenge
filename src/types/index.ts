@@ -1,7 +1,23 @@
 export type Dashboard = {
-  displayName:string,
   id:string,
-  starred: boolean
+  displayName:string,
+  starred: boolean,
+  items?: DashboardItem[],
+}
+
+export type DashboardItem = {
+  id:string,
+  type: "VISUALIZATION" | "MAP" | "MESSAGES" | "TEXT",
+  displayName:string,
+  starred: boolean,
+  visualization?: {
+    name: string,
+  },
+  map?: {
+    name: string,
+  }
+  text?: string,
+
 }
 
 

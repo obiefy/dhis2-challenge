@@ -9,10 +9,9 @@ export default function DashboardList() {
     <div className="">
       {error && <div className="text-red-500">{error}</div>}
       {loading && <Loading />}
-      <Accordion type="single" collapsible className="w-full">
+      {dashboards.length > 0 && <Accordion type="single" defaultValue={dashboards[0].id} collapsible className="w-full">
         {dashboards.map((dashboard) => <DashboardHeader key={dashboard.id} dashboard={dashboard}/>)}
-      </Accordion>
+      </Accordion>}
     </div>
-
   );
 }

@@ -4,8 +4,8 @@ import { ApiResponse } from "@/types";
 export const get = async <T>(endpoint: string): Promise<ApiResponse<T>> => {
   try {
     const response = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`);
-    const { dashboards } = await response.json();
-    return [dashboards, null];
+    const data = await response.json();
+    return [data, null];
   } catch (error:unknown) {
     console.log("API ERROR => ", error);
     let message = '';
