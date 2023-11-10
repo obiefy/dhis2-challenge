@@ -9,7 +9,6 @@ export type DashboardItem = {
   id: string;
   type: "VISUALIZATION" | "MAP" | "MESSAGES" | "TEXT";
   displayName: string;
-  starred: boolean;
   visualization?: {
     name: string;
   };

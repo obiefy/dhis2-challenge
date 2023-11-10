@@ -77,8 +77,22 @@ export const useDashboardItems = (
     const [data, error] = await get<{ dashboardItems: DashboardItem[] }>(
       `/${dashboard.id}.json`,
     );
-    console.log(error, data);
-    if (data) setItems(data.dashboardItems);
+    if (data?.dashboardItems) {
+      const formattedItems = data.dashboardItems.map((item): DashboardItem => {
+        const displayNameLookup = {
+          VISUALIZATION: item.visualization?.name,
+          MAP: item.map?.name,
+          MESSAGES: "Messages",
+          TEXT: item.text,
+        };
+
+        return {
+          ...item,
+          displayName: displayNameLookup[item.type] ?? "N/A",
+        };
+      });
+      setItems(formattedItems);
+    }
     if (error) setError(error);
     setLoading(false);
   };

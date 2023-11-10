@@ -47,9 +47,13 @@ export default function DashboardHeader({
           {dashboard.displayName}
         </div>
       </AccordionTrigger>
-      <AccordionContent>
-        <div className="px-4">
-          {loading && <Loading />}
+      <AccordionContent className="pb-0">
+        <div className="">
+          {loading && (
+            <div className="mx-4">
+              <Loading />
+            </div>
+          )}
           {!loading && items.map((item) => <Item key={item.id} item={item} />)}
         </div>
       </AccordionContent>
