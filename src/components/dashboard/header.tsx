@@ -57,8 +57,8 @@ export default function DashboardHeader({
       <AccordionContent className="pb-0">
         {loading && (
           <div className="m-4 grid md:grid-cols-2 gap-2">
-            <Skeleton className="w-full h-24 bg-slate-200" />
-            <Skeleton className="w-full h-24 bg-slate-200" />
+            <Skeleton className="w-full h-12 bg-slate-100" />
+            <Skeleton className="w-full h-12 bg-slate-100" />
           </div>
         )}
         {!loading && (
