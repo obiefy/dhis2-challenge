@@ -6,8 +6,8 @@ type PropsType = { item: DashboardItem };
 
 export default function Item({ item }: PropsType) {
   const icons = {
-    VISUALIZATION: Globe2,
-    MAP: PieChart,
+    VISUALIZATION: PieChart,
+    MAP: Globe2,
     TEXT: Type,
     MESSAGES: Mail,
   };
