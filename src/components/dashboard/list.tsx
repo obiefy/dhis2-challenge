@@ -12,12 +12,15 @@ import {
 } from "../ui/dropdown-menu";
 import { Filter } from "lucide-react";
 import { Button } from "../ui/button";
+import { FILTERS } from "@/constants";
+import { DashboardType } from "@/types";
 
 export default function DashboardList() {
-  const FILTERS = ["VISUALIZATION", "MAP", "MESSAGES", "TEXT"];
-
-  const [filter, setFilter] = useState<string>();
+  const [filter, setFilter] = useState<DashboardType | undefined>();
   const { loading, dashboards, error, getDashboards } = useDashboard();
+  const handleFilterChange = (newFilter: string) => {
+    setFilter(newFilter as DashboardType);
+  };
 
   useEffect(() => {
     getDashboards();
@@ -35,7 +38,10 @@ export default function DashboardList() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-40">
-            <DropdownMenuRadioGroup value={filter} onValueChange={setFilter}>
+            <DropdownMenuRadioGroup
+              value={filter}
+              onValueChange={handleFilterChange}
+            >
               {FILTERS.map((item) => (
                 <DropdownMenuRadioItem key={item} value={item}>
                   {item}
