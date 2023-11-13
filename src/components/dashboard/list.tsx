@@ -19,6 +19,11 @@ export default function DashboardList() {
   const [filter, setFilter] = useState<DashboardType | undefined>();
   const { loading, dashboards, error, getDashboards } = useDashboard();
   const handleFilterChange = (newFilter: string) => {
+    if (newFilter === filter) {
+      setFilter(undefined);
+      return;
+    }
+
     setFilter(newFilter as DashboardType);
   };
 
