@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { Bookmark } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 import { useDashboard, useDashboardItems } from "@/hooks/dashboard";
 import Item from "./item";
 import { Skeleton } from "../ui/skeleton";
@@ -27,6 +28,7 @@ export default function DashboardHeader({
   const [dashboard, setDashboard] = useState(dashboardParam);
   const [loaded, setLoaded] = useState(false);
   const { bookmark } = useDashboard();
+  const { toast } = useToast();
   const {
     loading,
     items: originalItems,
@@ -35,6 +37,12 @@ export default function DashboardHeader({
 
   const onBookmark = () => {
     setDashboard(bookmark(dashboard));
+    toast({
+      variant: "dark",
+      description: `Dashboard (${dashboard.displayName}) has been ${
+        dashboard.starred ? "removed" : "added"
+      } to you bookmarks`,
+    });
   };
 
   const items = useMemo(() => {
