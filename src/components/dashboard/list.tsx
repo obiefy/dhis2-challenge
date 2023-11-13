@@ -66,7 +66,7 @@ export default function DashboardList() {
               isActive={dashboard.id === dashboards[0].id}
               dashboard={dashboard}
               filter={filter}
-              onResetFilter={() => setFilter("")}
+              onResetFilter={() => setFilter(undefined)}
             />
           ))}
         </Accordion>
